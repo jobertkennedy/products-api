@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const requireDir = require('require-dir')
 const dotenv = require('dotenv').config({path: './src/.env'})
+const porta = process.env.PORT || 8080
 
 //Criando app
 const app = express()
@@ -18,4 +19,4 @@ requireDir('./src/models')
 //Rotas
 app.use('/api', require('./src/routes'))
 
-app.listen(3001)
+app.listen(porta)
