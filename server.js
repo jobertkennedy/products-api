@@ -2,11 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const requireDir = require('require-dir')
 const dotenv = require('dotenv').config({path: './src/.env'})
+const cors = require('cors')
+const {corsOptions} = require('./src/corsSetting')
 const porta = process.env.PORT || 8080
 
 //Criando app
 const app = express()
 app.use(express.json())
+app.use(cors(corsOptions))
 
 //Iniciando DB
 mongoose.connect(
