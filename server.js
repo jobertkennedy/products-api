@@ -20,6 +20,9 @@ requireDir('./src/models')
 
 
 //Rotas
+app.get('/', (req, res) => {
+    res.status(200).sendFile('./public/index.html')
+})
 app.use('/api', require('./src/routes'))
 
 app.listen(porta)
