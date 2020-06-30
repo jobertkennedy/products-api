@@ -39,7 +39,7 @@
             resArea.innerHTML = ''
             let index = ""
             if(!id == undefined){
-                await fetch(`http://localhost:3001/api/products/${id}`)
+                await fetch(`/api/products/${id}`)
                 .then(res => {
                     res.json()
                 })
@@ -54,7 +54,7 @@
                     resArea.innerHTML = responseModel(res[index] || res[0])
                 })
             } else {
-                await fetch(`http://localhost:3001/api/products/`)
+                await fetch(`/api/products/`)
                 .then(res => res.json())
                 .then(res => {
                     console.log(res)
