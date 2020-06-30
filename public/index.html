@@ -38,7 +38,7 @@
         const callApi = async (id) => {
             resArea.innerHTML = '<h2>Carregando...</h2>'
             let index = ""
-            if(!typeof(id) == 'undefined'){
+            if(typeof(id) != 'undefined'){
                 await fetch(`/api/products/${id}`)
                 .then(res => {
                     res.json()
