@@ -35,10 +35,10 @@
             return text
         }
 
-        const callApi = async (id = undefined) => {
+        const callApi = async (id) => {
             resArea.innerHTML = '<h2>Carregando...</h2>'
             let index = ""
-            if(!id == undefined){
+            if(!typeof(id) == 'undefined'){
                 await fetch(`/api/products/${id}`)
                 .then(res => {
                     res.json()
@@ -51,12 +51,14 @@
                             break
                         }
                     }
+                    resArea.innerHTML = ''
                     resArea.innerHTML = responseModel(res[index])
                 })
             } else {
                 await fetch(`/api/products/`)
                 .then(res => res.json())
                 .then(res => {
+                    resArea.innerHTML = ''
                     for(value in res){
                         if(resArea.length == 0){
                             resArea.innerHTML = `${responseModel(res[value])}\n\n`
