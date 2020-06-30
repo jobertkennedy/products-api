@@ -66,9 +66,9 @@
                     }
                     for(value in res){
                         if(resArea.length == 0){
-                            resArea.innerHTML = `${responseModel(res[index] || res[0])}\n\n`
+                            resArea.innerHTML = `${responseModel(res[value] || res[0])}\n\n`
                         } else {
-                            resArea.innerHTML += `${responseModel(res[index] || res[0])}\n\n`
+                            resArea.innerHTML += `${responseModel(res[value] || res[0])}\n\n`
                         }
                     }
                 })
