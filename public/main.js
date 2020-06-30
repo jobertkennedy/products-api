@@ -3,21 +3,43 @@ const productId = document.querySelector('input#productId')
 const resArea = document.querySelector('code#res')
 const form = document.querySelector('form#form')
 
+
+const responseModel = (response) => {
+    const { title, desc, url } = response
+    let text = `<h2><strong>${title}</strong></h2>\n<b>Descrição:</b> ${desc} \n<b>URL:</b> <a href="${url}" target="_blank">${url}</a>`
+    return text
+}
+
 const callApi = async (id = undefined) => {
     resArea.innerHTML = ''
+    let index = ""
     if(!id == undefined){
-        fetch(`http://localhost:3001/api/products/${id}`)
-        .then(res => res.json())
+        await fetch(`http://localhost:3001/api/products/${id}`)
+        .then(res => {
+            res.json()
+        })
         .then(res => {
             console.log(res)
-            resArea.innerHTML = res['title']
+            for(value in res){
+                if(res[value]['_id'] == id){
+                    index = value
+                    break
+                }
+            }
+            resArea.innerHTML = responseModel(res[index] || res[0])
         })
     } else {
-        fetch(`http://localhost:3001/api/products/`)
+        await fetch(`http://localhost:3001/api/products/`)
         .then(res => res.json())
         .then(res => {
             console.log(res)
-            resArea.innerHTML = res
+            for(value in res){
+                if(res[value]['_id'] == id){
+                    index = value
+                    break
+                }
+            }
+            resArea.innerHTML = responseModel(res[index] || res[0])
         })
     }
 }

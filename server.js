@@ -4,6 +4,7 @@ const requireDir = require('require-dir')
 const dotenv = require('dotenv').config({path: './src/.env'})
 const cors = require('cors')
 const path = require('path')
+const { pathToFileURL } = require('url')
 const cOptions = require('./src/corsSetting').corsOptions
 const porta = process.env.PORT || 8080
 
