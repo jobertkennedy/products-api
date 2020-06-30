@@ -38,7 +38,7 @@
         const callApi = async (id = undefined) => {
             resArea.innerHTML = ''
             let index = ""
-            if(!id == undefined){
+            if(id != undefined){
                 await fetch(`/api/products/${id}`)
                 .then(res => {
                     res.json()
@@ -57,13 +57,6 @@
                 await fetch(`/api/products/`)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res)
-                    for(value in res){
-                        if(res[value]['_id'] == id){
-                            index = value
-                            break
-                        }
-                    }
                     for(value in res){
                         if(resArea.length == 0){
                             resArea.innerHTML = `${responseModel(res[value] || res[0])}\n\n`
