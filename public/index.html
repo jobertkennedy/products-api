@@ -7,11 +7,21 @@
     <title>Products API</title>
 </head>
 <body>
-    <h1>Products API</h1>
     <div class="container">
+        <h1>Products API</h1>
         <div class="jumbotron">
             <h3><strong>Funciona!</strong></h3>
+            <form action="/" method="get" id="form">
+                <input 
+                type="text" 
+                name="" 
+                id="productId" 
+                placeholder="Insert a product id or leave it blank to get all"><br>
+                <button id='formBtn'>Find</button>
+            </form>
+            <code id='res'></code>
         </div>
     </div>
+    <script src="/public/main.js"></script>
 </body>
 </html>

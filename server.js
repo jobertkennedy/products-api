@@ -4,13 +4,13 @@ const requireDir = require('require-dir')
 const dotenv = require('dotenv').config({path: './src/.env'})
 const cors = require('cors')
 const path = require('path')
-const {corsOptions} = require('./src/corsSetting')
+const cOptions = require('./src/corsSetting').corsOptions
 const porta = process.env.PORT || 8080
 
 //Criando app
 const app = express()
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors(cOptions))
 
 //Iniciando DB
 mongoose.connect(
@@ -21,7 +21,7 @@ requireDir('./src/models')
 
 
 //Rotas
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname + '/public/index.html'))
 })
 app.use('/api', require('./src/routes'))
